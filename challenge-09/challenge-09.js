@@ -39,13 +39,14 @@ correto da variável ou função chamada.
     myFunction3();
 */
     function myFunction3() {
+        var number1 = 40;
+        var number2 = 50;
         function sum() {
             return number1 + number2;
         };
         console.log( 'A soma de 40 e 50 é igual a', sum() );
-        var number2 = 50;
         console.log( 'Na função myFunction3, number1 é igual a', number1 );
-        var number1 = 40;
+        
         return sum();
         
     }
@@ -64,13 +65,18 @@ o retorno de `calculator`.
 por parâmetro, INVOCADA, e passando a ela por parâmetro os dois valores
 que foram passadas para a primeira função `calculator`.
 */
-// ?
+
+let calculadora = (num1, num2) => {
+    return (callback) => {
+        return callback (num1, num2);
+    }
+};
 
 /*
 Declare uma variável chamada `sum`, e atribua a ela a função `calculator`,
 passando dois números por parâmetro.
 */
-// ?
+ let sum = calculadora(1, 5);
 
 /*
 Sabemos que `sum` agora tem uma função atribuída a ela, que é o retorno de
@@ -81,15 +87,21 @@ para a chamada à `calculator` acima.
 uma função anônima que irá retornar a soma dos dois números que essa função
 anônima tem como seus argumentos.
 */
-    console.log( 'O resultado da soma é:' );
-// ?
+    console.log( `O resultado da soma é: ${sum((num1, num2) => num1+num2 )}` );
+    
 
 /*
 Agora declare outra variáveis chamadas `subtraction`, `multiplication`,
 `division` e `mod`, e atribua à elas `calculator`, passando números
 diferentes para cada chamada.
 */
-// ?
+
+const subtraction = calculadora (20, 10);
+const multiplication = calculadora (30,15);
+const division = calculadora (30, 5);
+const mod = calculadora (60, 6);
+
+
 
 /*
 Mostre as variáveis acima no `console` (uma chamada de console por variável),
@@ -98,7 +110,7 @@ divisão e módulo (resto de divisão), conforme a função utilizada.
 As suas respostas devem estar abaixo dos `console.log` referentes à cada
 chamada.
 */
-    console.log( 'O resultado da subtração é:' );
+    console.log( `O resultado da subtração é: ${subtraction((num1, num2) => num1-num2)}` );
 // ?
 
     console.log( 'O resultado da multiplicação é:' );
